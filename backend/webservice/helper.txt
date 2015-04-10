@@ -1,0 +1,20 @@
+My SQL startup:
+	cd /usr/local/mysql
+	sudo ./bin/mysqld_safe &
+	More info: http://dev.mysql.com/doc/refman/5.0/en/macosx-installation.html
+
+Tomcat Location: /Library/Tomcat/
+
+Tomcat Start: 
+	cd TomcatLocation
+	cd bin
+	sh shutdown.sh
+	sh startup.sh
+
+Tomcat Logs:
+	cd TomcatLocation
+	tail -f logs/catalina.out
+
+Tomcat Test:
+	browser: http://localhost:8080/RequestProcessingServer-0.0.1/v1/user/test
+	

@@ -1,0 +1,331 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<body ng-app="punjaab">
+<script type="text/javascript" src="angular.min.js"> </script>
+<script type="text/javascript" src="punjaabs.js"> </script>
+<div ng-controller="PunjaabController">
+	<div class="row">
+		<br><br><br><br><br><br><br><br><br><br>
+
+		<div ng-show="home">
+				<div class="col-md-8">
+					<div class="front-welcome-text">
+						<h2>Our Story</h2>
+					</div>
+				</div>
+			<div class="col-sm-6 pull-right story-text" >
+				<div><p>
+					<strong>WELCOME</strong>
+					&nbsp;to <em>Punj aab's</em> indian restaurant, where we strive to embody the spirit of Punjaab.
+					Punjaab is famous for its food depicting the warmth and richness of it's heritage culture.</p><p>
+					<em>Our ingredients are sourced from quality purveyors featuring:</em></p><ul style="margin-left:0px; margin-right:0px">
+					<li>Fresh, natural, domestic lamb</li><li>Certified Beef</li><li>Free-range chicken</li><li>Sustainably harvested seafood</li>
+					<li>Locally sourced produce</li></ul><p>Echoing the culinary traditions of Punjaab,
+					our authentically original family recipes feature protein-rich legumes, earthy grains and exotic spices with a contemporary
+					twist.&nbsp;</p><p>We strive to bring to you <strong>Fresh &amp; Simple </strong>Indian Food. &nbsp;</p>
+			</div>
+		</div>
+		</div>
+
+		<div ng-show="menu">
+			<div class="col-md-8">
+				<div class="front-welcome-text">
+					<h2>Menu</h2>
+				</div>
+			</div>
+			<br>
+			<div class="container text-center menu-cat-text">
+				<ul class="nav nav-tabs">
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a href ></a></li>
+					<li><a class="active" href ng-click="setMenu('soups')">Soups</a></li>
+					<li><a href ng-click="setMenu('starters')">Starters</a></li>
+					<li><a href ng-click="setMenu('entree')">Entree</a></li>
+					<li><a href ng-click="setMenu('breads')">Breads</a></li>
+					<li><a href ng-click="setMenu('rice')">Rice</a></li>
+					<li><a href ng-click="setMenu('sides')">Sides</a></li>
+					<li><a href ng-click="setMenu('desserts')">Dessert</a></li>
+				</ul>
+			</div>
+			<div class="container">
+				<div ng-repeat="menuitem in menuItemsToDisplay" class="row">
+					<div class="col-sm-6">
+						<div class="menu-item-header-text">
+							{{menuitem.name}}
+							<div class="menu-item-footer-text">
+								<sub>{{menuitem.footer}}</sub>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3 pull-right menu-item-price-text">
+						<br>
+						{{menuitem.price}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="contact">
+			<div class="col-md-8">
+				<div class="front-welcome-text">
+					<h2>Contact</h2>
+				</div>
+			</div>
+			<br><br>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="menu-cat-text ">
+							<br><br>
+							<h2>Punj 'aabs Indian Restaurant</h2>
+							<p>190 S. Murphy Avenue,&nbsp;Sunnyvale, CA 94086 &nbsp;</p><p><em><strong>tel&nbsp;</strong></em>
+							<!--<a href="tel:%2861%29%20046%02652%026704">(61) 046 652 6704</a> -->
+							(61) 046 652 6704
+							&nbsp;</p><p> </p><p>punjaabsindianrestaurant@gmail.com<br />
+							<br>(We do not accept reservations via email.&nbsp; For reservations, please visit reservations tab.</p>
+						</div>
+					</div>
+					<div class="col-sm-4 pull-right">
+						<span></span>
+					</div>
+					<div class="col-sm-4 pull-right">
+
+					<img src="https://maps.googleapis.com/maps/api/staticmap?center=-41.330115,148.247060&size=400x300&zoom=15&maptype=roadmap&markers=color:blue|label:S|-41.330115,148.247060" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="menu-cat-text">
+						<br>
+						<h2>Hours</h2>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<br><br>
+					<div class="col-sm-6">
+						<div class="menu-cat-text">
+							<h2>Lunch</h2>
+						</div>
+					</div>
+					<div class="col-sm-6 pull-right">
+						<p>Tuesday - Sunday  /  11:30 am - 2:30 pm</p>
+						<br>
+						<p>Monday Closed</p>
+					</div>
+				</div>
+				<div class="row">
+					<br><br>
+					<div class="col-sm-6">
+						<div class="menu-cat-text">
+							<h2>Dinner</h2>
+						</div>
+					</div>
+					<div class="col-sm-6 pull-right">
+						<p>Tuesday - Sunday  /  7:00 pm - 11:00 pm</p>
+						<br>
+						<p>Monday Closed</p>
+					</div>
+				</div>
+				<br><br><br><br><br>
+			</div>
+		</div>
+
+		<div ng-show="reservation">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="front-welcome-text">
+						<h2>Reservation</h2>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<form role="form">
+					<div class="text-center">
+						<div ng-show="reservationInputFlow">
+							<div ng-show="planReservation">
+								<div class="row">
+									<div class="col-sm-3"></div>
+									<div class="col-sm-3">
+										<label class="menu-cat-text">Your Name</label>
+										<input class="form-control input-sm" ng-model="userName" type="text" />
+										<br>
+									</div>
+									<div class="col-sm-3">
+										<label class="menu-cat-text">Party size</label>
+										<select class="form-control" id="sel1" ng-model="numberOfGuests" placeholder="Party size">
+											<option value="1" >1 person</option>
+											<option value="2" >2 people</option>
+											<option value="3" >3 people</option>
+											<option value="4" >4 people</option>
+											<option value="5" >5 people</option>
+											<option value="6" >6 people</option>
+											<option value="7" >7 people</option>
+											<option value="8" >8 people</option>
+										</select>
+									</div>
+								</div>
+
+							<div class="row">
+								<div class="btn-group" role="group">
+									<button type="button" class="btn btn-default" ng-click="setLunch()" ng-disabled="disableLunch">Lunch</button>
+									<button type="button" class="btn btn-default" ng-click="setDinner()" ng-disabled="disableDinner">Dinner</button>
+								</div>
+							</div>
+							<br>
+							<div class="row menu-item-price-text" ng-show="setAlert">
+								{{alertMessage}}
+							</div>
+							<div class="row" ng-show="lunchTimes">
+								<div class="btn-group" role="group">
+									<button type="button" id="1145" class="btn btn-default" ng-click="setReservationTime('1145')">11:45</button>
+									<button type="button" id="1200" class="btn btn-default" ng-click="setReservationTime('1200')">12:00</button>
+									<button type="button" id="1215" class="btn btn-default" ng-click="setReservationTime('1215')">12:15</button>
+									<button type="button" id="1230" class="btn btn-default" ng-click="setReservationTime('1230')">12:30</button>
+									<button type="button" id="1245" class="btn btn-default" ng-click="setReservationTime('1245')">12:45</button>
+									<button type="button" id="1300" class="btn btn-default" ng-click="setReservationTime('1300')">13:00</button>
+									<button type="button" id="1315" class="btn btn-default" ng-click="setReservationTime('1315')">13:15</button>
+									<button type="button" id="1330" class="btn btn-default" ng-click="setReservationTime('1330')">13:30</button>
+									<button type="button" id="1345" class="btn btn-default" ng-click="setReservationTime('1345')">13:45</button>
+									<button type="button" id="1400" class="btn btn-default" ng-click="setReservationTime('1400')">14:00</button>
+								</div>
+							</div>
+							<div class="row" ng-show="dinnerTimes">
+								<div class="btn-group" role="group">
+									<button type="button" id="1700" class="btn btn-default" ng-click="setReservationTime('1700')">17:00</button>
+									<button type="button" id="1715" class="btn btn-default" ng-click="setReservationTime('1715')">17:15</button>
+									<button type="button" id="1730" class="btn btn-default" ng-click="setReservationTime('1730')">17:30</button>
+									<button type="button" id="1745" class="btn btn-default" ng-click="setReservationTime('1745')">17:45</button>
+									<button type="button" id="1800" class="btn btn-default" ng-click="setReservationTime('1800')">18:00</button>
+									<button type="button" id="1815" class="btn btn-default" ng-click="setReservationTime('1815')">18:15</button>
+									<button type="button" id="1830" class="btn btn-default" ng-click="setReservationTime('1830')">18:30</button>
+									<button type="button" id="1845" class="btn btn-default" ng-click="setReservationTime('1845')">18:45</button>
+									<button type="button" id="1900" class="btn btn-default" ng-click="setReservationTime('1900')">19:00</button>
+									<button type="button" id="2015" class="btn btn-default" ng-click="setReservationTime('2015')">20:15</button>
+									<button type="button" id="2030" class="btn btn-default" ng-click="setReservationTime('2030')">20:30</button>
+									<button type="button" id="2045" class="btn btn-default" ng-click="setReservationTime('2045')">20:45</button>
+								</div>
+							</div>
+						</div>
+							<div ng-show="planReservation2">
+							<br>
+							<div class="row">
+								<div class="col-sm-3"></div>
+								<div class="col-sm-3">
+									<label class="menu-cat-text">Your email address</label>
+									<input class="form-control input-sm" ng-model="userEmail" type="text" placeholder="Your email"/>
+									<br>
+								</div>
+								<div class="col-sm-3">
+									<label class="menu-cat-text">Your phone number</label>
+									<input class="form-control input-sm" ng-model="userPhone" type="text" placeholder="Your Phone"/>
+									<br>
+								</div>
+							</div>
+							<div class="row menu-item-price-text" ng-show="setSecondAlert">
+								{{alertMessage}}
+							</div>
+							<div class="row">
+								<button type="button" class="btn btn-default" ng-click="next()">Next</button>
+							</div>
+						</div>
+						</div>
+						<div ng-show="showSummary">
+							<br>
+							<div class="menu-item-price-text">
+								{{reservationSummaryLine1}}
+								<br><br>
+								{{reservationSummaryLine2}}
+								<br><br>
+								<button type="button" class="btn btn-default" ng-click="modify()">Modify</button>
+								<span></span>
+								<button type="button" class="btn btn-default" ng-click="submit()">Submit</button>
+							</div>
+						</div>
+						<div ng-show="gotResponse">
+							<div ng-show="reservationSuccess">
+								<br><br><br><br>
+								<div>
+									<div class="menu-item-price-text">
+										{{successMessageCustom}}
+										<br><br>
+										{{successMessageDefault}}
+										<br><br>
+										Where would you like to go ...
+										<br><br>
+										<div class="row">
+											<button type="button" class="btn btn-default" ng-click="homeView()">Home</button>
+											<span></span>
+											<button type="button" class="btn btn-default" ng-click="menuView()">Menu</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div ng-show="reservationFailure">
+								<br><br><br><br>
+								<div>
+									<div class="menu-item-price-text">
+										{{failureMessageCustom}}
+										<br><br>
+										{{failureMessageDefault}}
+										<br><br>
+										Where would you like to go ...
+										<br><br>
+										<div class="row">
+											<button type="button" class="btn btn-default" ng-click="homeView()">Home</button>
+											<span></span>
+											<button type="button" class="btn btn-default" ng-click="menuView()">Menu</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container">
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li><a id="hometitle" href="./"><strong>Punj aab's</strong></a></li>
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a ng-click="homeView()">Home</a></li>
+							<li><a ng-click="menuView()">Menu</a></li>
+							<li><a ng-click="reservationView()">Reservation</a></li>
+							<li><a ng-click="contactView()">Contact</a></li>
+							</ul>
+						</div>
+				</div>
+			</nav>
+
+			<nav class="navbar navbar-default navbar-fixed-bottom">
+				<div class="container">
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="https://www.facebook.com/pages/Punjaabs-Cusine/353864784729387" target="_blank">Facebook</a></li>
+							<li><a href="#" target="_blank">Yelp</a></li>
+							<li><a href="http://www.tripadvisor.com/Restaurant_Review-g504328-d4131665-Reviews-Punj_Aab_s-St_Helens_Tasmania.html" target="_blank">TripAdvisor</a></li>
+							<li><a href="#" target="_blank">Instagram</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+	</div>
+
+</div>
+</body>
+<head>
+	<meta charset="utf-8">
+	<title>Punj aabs!</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<link rel="stylesheet" type="text/css" href="punjaabs.css" />
+	 <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+</head>
+
+</html>

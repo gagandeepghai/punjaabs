@@ -1,0 +1,2 @@
+localhost:8080/RequestProcessingServer-0.0.1/v1/places/getPOI?destinationCity=Seattle,WA
+http://localhost:8080/RequestProcessingServer-0.0.1/v1/places/getPOIBetween?origin=Milpitas,CA&destination=Seattle,WA
